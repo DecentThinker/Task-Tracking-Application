@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Task_Tracker</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Login icon.png" />
+    <None Remove="Images\Password.png" />
+    <None Remove="Images\time.png" />
+    <None Remove="Images\Tracker.png" />
+    <None Remove="Images\username.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FlaUI.Core" Version="4.0.0" />
+    <PackageReference Include="FlaUI.UIA2" Version="4.0.0" />
+    <PackageReference Include="FlaUI.UIA3" Version="4.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Login icon.png" />
+    <Resource Include="Images\Password.png" />
+    <Resource Include="Images\time.png" />
+    <Resource Include="Images\Tracker.png" />
+    <Resource Include="Images\username.png" />
+  </ItemGroup>
+
+</Project>
