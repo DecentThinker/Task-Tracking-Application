@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="Task_Tracker.Edit_Control"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Task_Tracker"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <!--Editing form-->
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Margin="0,10,0,0" >
+            <TextBlock Margin="10" Text="Enter The Required Details  " VerticalAlignment="Center" Foreground="#FF0F4E7A" FontSize="20"  FontWeight="SemiBold"/>
+
+            <!--Name-->
+            <StackPanel Margin="10,0,0,10" Orientation="Horizontal">
+                <Label Content="Name"  Width="100"  FontSize="16"/>
+                <TextBox FontSize="16" Name="name" IsEnabled="False" Width="200" />
+            </StackPanel>
+             
+            <!--Email-->
+            <StackPanel Margin="10,0,0,10" Orientation="Horizontal" >
+                <Label Content="E-mail"  Width="100" FontSize="16"/>
+                <TextBox FontSize="16" Name="email" IsEnabled="False" Width="200" />
+            </StackPanel>
+
+            <Button Margin="10" x:Name="Verify" Content="Click to Verify" IsEnabled="False" Height="30" Width="120" FontSize="16"  Background="#FF0F4E7A" Foreground="white"  Click="Button_Click_Verify"/>
+
+            <!--OTP-->
+            <StackPanel Margin="10,0,0,10" Orientation="Horizontal" >
+                <Label Name="otpLabel" Content="Enter OTP"  Width="100" FontSize="16"/>
+                <TextBox FontSize="16" Name="OTP" IsEnabled="False" Width="100"/>
+            </StackPanel>
+
+            <!--Error label and Submit Button-->
+            <StackPanel  Margin="10,0,0,5" Orientation="Horizontal" >
+                <Label Name="error" Width="220"  Height="40" Foreground="Red" FontSize="12"/>
+                <Button Name="submit1" HorizontalAlignment="Right" IsEnabled="False" Margin="20,0,0,0" Content="Submit"  FontSize="16"  Background="#FF0F4E7A" Foreground="white" Width="70" Height="30" Click="Submit_Details"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <Button   Margin="20,0,0,0" Content="Change Name"  FontSize="16"  Background="#FF0F4E7A" Foreground="white" Width="150" Height="30" Click="Click_Name"/>
+            <Button   Margin="20,0,0,0" Content="Change E-Mail"  FontSize="16"  Background="#FF0F4E7A" Foreground="white" Width="150" Height="30" Click="Click_Email"/>
+        </StackPanel>
+
+        <Rectangle Grid.Column="1" HorizontalAlignment="Left"  Grid.RowSpan="2" VerticalAlignment="Stretch" Width="2" Fill="#FF0F4E7A" />
+        <Rectangle Grid.Row="0" HorizontalAlignment="Stretch"  Grid.ColumnSpan="2" VerticalAlignment="Bottom" Height="2" Fill="#FF0F4E7A" />
+
+        <!--Password Change-->
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            
+            <TextBlock Margin="10" Text="Enter The Required Details  " VerticalAlignment="Center" Foreground="#FF0F4E7A" FontSize="20"  FontWeight="SemiBold"/>
+            <!--Password-->
+            <StackPanel Margin="10,0,0,10" Orientation="Horizontal"  >
+                <Label Content="Old Password" Width="120"  FontSize="16"/>
+                <TextBox x:Name="old_password" FontSize="16" IsEnabled="False"  Width="200"/>
+            </StackPanel>
+            
+            <!--Password-->
+            <StackPanel Margin="10,0,0,10" Orientation="Horizontal"  >
+                <Label Content="New Password" Width="120"  FontSize="16"/>
+                <TextBox x:Name="new_password" FontSize="16" IsEnabled="False"  Width="200"/>
+            </StackPanel>
+
+            <!--Confirm password-->
+            <StackPanel Margin="10,0,0,0" Orientation="Horizontal" >
+                <Label Content="Confirm&#xA;Password" Width="120"  FontSize="16"/>
+                <TextBox x:Name="confirmPassword" Margin="0,5,0,15" IsEnabled="False" FontSize="16" Width="200"/>
+            </StackPanel>
+
+            <StackPanel  Margin="10,0,0,5" Orientation="Horizontal" >
+                <Label Name="error2" Width="220"  Height="40" Foreground="Red" FontSize="12"/>
+                <Button Name="submit_pass" HorizontalAlignment="Right" Margin="20,0,0,0" Content="Submit" IsEnabled="False"  FontSize="16"  Background="#FF0F4E7A" Foreground="white" Width="70" Height="30" Click="Submit_Password"/>
+            </StackPanel>
+        </StackPanel>
+        <Button  Grid.Column="1" Grid.Row="1" Margin="20,0,0,0" Content="Change Password"  FontSize="16"  Background="#FF0F4E7A" Foreground="white" Width="150" Height="30" Click="Click_Password"/>
+    </Grid>
+</UserControl>

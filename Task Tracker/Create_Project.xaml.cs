@@ -124,6 +124,7 @@ namespace Task_Tracker
                 //Ticket generated
                 error.Foreground = Brushes.Green;
                 error.Text = "*Project\nCreated";
+                sentNotify();
             }
             else
             {
@@ -207,6 +208,23 @@ namespace Task_Tracker
             command.Parameters.AddWithValue("status", status);
 
             command.ExecuteNonQuery();
+        }
+        private void sentNotify()
+        {
+            List<string> emails = new List<string>();
+            GmailVerification gmail = new GmailVerification();
+            string query = "select email from users u,ticket_users t where t.userid=u.userid and t.ticket_id = @id";
+            SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.AddWithValue("@id", id);
+            SqlDataReader reader = command.ExecuteReader();
+            while(reader.Read())
+            {
+                emails.Add(reader.GetString(0));    
+            }
+            foreach(string email in emails)
+            {
+                gmail.NotifyMessage("Project",email);
+            }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {

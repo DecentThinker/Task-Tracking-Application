@@ -50,9 +50,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
-            <Button Content="Add Project" Margin="10" Width="150" Background="#FF0F4E7A" Foreground="White" HorizontalAlignment="Left" Click="Add_Project" />
-            <Button Content="Edit" Margin="10" Width="150" Background="#FF0F4E7A" Foreground="White" HorizontalAlignment="Center" Click="Edit_Project" />
-            <Button Content="Delete" Margin="10" Width="150" Background="#FF0F4E7A" Foreground="White" HorizontalAlignment="Left" Click="Delete_Project"/>
+            <Button x:Name="Add" Content="Add Project" Margin="10" Width="150" Background="#FF0F4E7A" Foreground="White" HorizontalAlignment="Left" Click="Add_Project" />
+            <Button x:Name="Edit" Content="Edit" Margin="10" Width="150" Background="#FF0F4E7A" Foreground="White" HorizontalAlignment="Center" Click="Edit_Project" />
+            <Button x:Name="Delete" Content="Delete" Margin="10" Width="150" Background="#FF0F4E7A" Foreground="White" HorizontalAlignment="Left" Click="Delete_Project"/>
             <Button Content="Progress" Margin="10" Width="150" Background="#FF0F4E7A" Foreground="White" HorizontalAlignment="Left" Click="Progress_Project"/>
         </StackPanel>
     </Grid>

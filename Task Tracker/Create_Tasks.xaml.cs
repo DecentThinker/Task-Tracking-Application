@@ -166,6 +166,7 @@ namespace Task_Tracker
 
                 error.Foreground = Brushes.Green;
                 error.Text = "*Task\nCreated";
+                sentNotify(n);
             }
             else
             {
@@ -230,6 +231,20 @@ namespace Task_Tracker
             command.Parameters.AddWithValue("filename", attachment);
             command.Parameters.AddWithValue("ticket_id", id);
             command.ExecuteNonQuery();
+        }
+        private void sentNotify(int id)
+        {
+            string email;
+            GmailVerification gmail = new GmailVerification();
+            string query = "select email from users u,ticket_users t where t.userid=u.userid and t.ticket_id = @id";
+            SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.AddWithValue("@id", id);
+            SqlDataReader reader = command.ExecuteReader();
+            if(reader.Read())
+            {
+                email = reader.GetString(0);
+                gmail.NotifyMessage("Task", email);
+            }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {

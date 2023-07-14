@@ -16,22 +16,17 @@
                 <Button Content="Home" Margin="10" Width="50" Background="#FF0F4E7A" BorderBrush="Transparent" Foreground="White" Click="Click_Home" />
                 <Button Content="Logout" Margin="10" Width="50" Background="#FF0F4E7A"  BorderBrush="Transparent" Foreground="White" Click="Click_Logout" />
             </StackPanel>
-            
+
             <TextBlock x:Name="title" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Century Gothic" FontWeight="Bold" FontSize="20"  Foreground="White"/>
 
             <Menu Width="75" Margin="0,10,0,10" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#FF0F4E7A" Foreground="White" >
                 <MenuItem Header="Account" >
                     <MenuItem Header="View Account" Click="View_Account"  Foreground="Black"/>
-                    <MenuItem Header="Edit Account"   Foreground="Black">
-                        <MenuItem Header="E-mail" Click="Email_Edit" Foreground="Black" />
-                        <MenuItem Header="Name" Click="Name_Edit"  Foreground="Black" />
-                        <MenuItem Header="Password" Click="Password_Change" Foreground="Black" />
-                    </MenuItem>
+                    <MenuItem Header="Edit Account" Click="Edit_Account"  Foreground="Black"/>
                     <MenuItem x:Name="All" Header="All Accounts" Click="All_Account" IsEnabled="False"  Foreground="Black"/>
                 </MenuItem>
             </Menu>
         </Grid>
-        
         <ContentControl Grid.Row="1" x:Name="content"/>
     </Grid>
 </Window>

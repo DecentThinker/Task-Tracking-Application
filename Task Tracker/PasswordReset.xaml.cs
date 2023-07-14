@@ -82,8 +82,8 @@ namespace Task_Tracker
             if (Answer == "")
                 return;
             otp = create_OTP();
-            GmailVerification gverify = new GmailVerification(Answer);
-            bool res = gverify.isValid(otp);
+            GmailVerification gverify = new GmailVerification();
+            bool res = gverify.OTPMessage(otp,Answer);
             if(res)
             {
                 passwordLabel.Content = "OTP Sent";

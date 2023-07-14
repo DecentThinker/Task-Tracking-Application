@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using Task_Tracker;
@@ -17,7 +18,7 @@ namespace Task_Tracker
     /// <summary>
     /// Interaction logic for Project_Dashboard.xaml
     /// </summary>
-    public partial class Project_Dashboard : UserControl
+    public partial class Project_Dashboard : System.Windows.Controls.UserControl
     {
         int id;
         MainWindow window;
@@ -33,17 +34,25 @@ namespace Task_Tracker
             project = selectedRow;
             //Ticket id of the projrect
             id = (int)project["id"];
-            createTable();
-            project_Resources();
             this.window = window;
             window.panelHeader.Visibility = Visibility.Visible;
             string name = (string)project["name"];
             window.title.Text = name;
-            dataGrid.ItemsSource = dataTable1.DefaultView;
+            if (window.role == "Employee")
+            {
+                Add.Visibility = Visibility.Collapsed;
+                Edit.Visibility = Visibility.Collapsed;
+                Delete.Visibility = Visibility.Collapsed;
+            }
+            createTable();
+            project_Resources();
+            
+            dataGrid.ItemsSource = dataTable1.DefaultView;     
         }
+        List<string> users;
         private void project_Resources()
         {
-            List<string> users = new List<string>(); 
+            users = new List<string>(); 
             string query = "SELECT u.name FROM users u,ticket_users tu where tu.ticket_id = @id and u.userid = tu.userid";
             SqlCommand command = new SqlCommand(query, conn);
             command.Parameters.AddWithValue("id",id);
@@ -212,6 +221,16 @@ namespace Task_Tracker
                 }
             }
             dataGrid.ItemsSource = dataTable.DefaultView;
+        }
+
+        private void resources_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            View_Resources resources = new View_Resources(users);
+            resources.ShowDialog();
+            if(resources.DialogResult==true)
+            {
+                resources.Close();
+            }
         }
     }
 }

@@ -27,6 +27,7 @@ namespace Task_Tracker
     {
         string userid;
         DataTable profile;
+        public string role;
         public MainWindow()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace Task_Tracker
         public void set_profile(DataTable new_profile)
         {
             profile=new_profile;
-            string role = (string)profile.Rows[0]["type_name"];
+            role = (string)profile.Rows[0]["type_name"];
             userid = (string)profile.Rows[0]["userid"];
             if (role=="Admin")
             {
@@ -70,25 +71,11 @@ namespace Task_Tracker
                 user.Close();
             }
         }
-        private void Email_Edit(object sender, RoutedEventArgs e)
+        private void Edit_Account(object sender, RoutedEventArgs e)
         {
-            Edit_Window email = new Edit_Window(this,"Enter E-Email", userid,"E-Mail");
-            email.ShowDialog();
-            if(DialogResult == true) { email.Close(); }
+            Edit_Control editor = new Edit_Control(this);
+            open(editor);
             
-        }
-        private void Name_Edit(object sender, RoutedEventArgs e)
-        {
-            Edit_Window name = new Edit_Window(this,"Enter Name", userid, "Name");
-            name.ShowDialog();
-            if (DialogResult == true) { name.Close(); }
-        }
-        private void Password_Change(object sender, RoutedEventArgs e)
-        {
-            Edit_Window password = new Edit_Window(this,"Enter New Password", userid, "Password");
-            password.ShowDialog();
-            if (DialogResult == true) { password.Close(); }
-
         }
 
         private void All_Account(object sender, RoutedEventArgs e)

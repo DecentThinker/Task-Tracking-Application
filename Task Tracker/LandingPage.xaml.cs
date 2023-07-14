@@ -1,10 +1,7 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 
 namespace Task_Tracker
@@ -16,13 +13,19 @@ namespace Task_Tracker
         public LandingPage(MainWindow window)
         {
             InitializeComponent();
+            this.window = window;
+            window.panelHeader.Visibility = Visibility.Visible;
+            window.title.Text = "Projects";
+            if (window.role == "Employee")
+            {
+                Add.Visibility = Visibility.Collapsed;
+                Edit.Visibility = Visibility.Collapsed;
+                Delete.Visibility = Visibility.Collapsed;
+            }
             string connstring = "Data Source = localhost; Initial Catalog = TaskTracking; Integrated Security = True";
             conn = new SqlConnection(connstring);
             conn.Open();
             createTable();
-            this.window = window;
-            window.panelHeader.Visibility = Visibility.Visible;
-            window.title.Text = "Projects";
         }
         public void createTable()
         {

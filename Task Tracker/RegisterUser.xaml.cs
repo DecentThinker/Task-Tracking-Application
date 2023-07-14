@@ -80,7 +80,7 @@ namespace Task_Tracker
             }
         }
         //Validate if all fields are correctly filled.
-        private bool PasswordValidation()
+        public bool PasswordValidation()
         {
             error.Content = string.Empty;
             if (Password.Length >= 8)
@@ -197,9 +197,7 @@ namespace Task_Tracker
                 await Task.Delay(1000);
             }
             window.open(new RegisterUser(window));
-
         }
-
         private void Button_Click_Login(object sender, RoutedEventArgs e)
         {
             window.open(new LoginPage(window));
@@ -228,8 +226,8 @@ namespace Task_Tracker
             if (email.Text == "")
                 return;
             otp = create_OTP();
-            GmailVerification gverify = new GmailVerification(email.Text);
-            bool res = gverify.isValid(otp);
+            GmailVerification gverify = new GmailVerification();
+            bool res = gverify.OTPMessage(otp,email.Text);
             otpLabel.Visibility = Visibility.Visible;
             OTP.Visibility = Visibility.Visible;
             error.Foreground = Brushes.Green;
